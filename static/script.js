@@ -1,6 +1,7 @@
 // Load certificates when the page loads
 document.addEventListener('DOMContentLoaded', function() {
-    let certificates = [];
+    let allCertificates = []; // المصفوفة الأصلية
+    let displayedCertificates = []; // المصفوفة المفلترة
     let currentCertificateIndex = 0;
     const searchInput = document.getElementById('searchInput');
     const departmentFilter = document.getElementById('departmentFilter');
@@ -12,9 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('data/certificates.json')
         .then(response => response.json())
         .then(data => {
-            certificates = data.filter(cert => cert['certificate url'] && cert['certificate url'].trim() !== '');
-            updateFilters(certificates);
-            displayCertificates(certificates);
+            allCertificates = data.filter(cert => cert['certificate url'] && cert['certificate url'].trim() !== '');
+            displayedCertificates = [...allCertificates];
+            updateFilters(allCertificates);
+            displayCertificates(displayedCertificates);
         })
         .catch(error => console.error('Error:', error));
 
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayCertificates(certificates) {
         const container = document.getElementById('certificatesContainer');
         container.innerHTML = '';
+        displayedCertificates = certificates; // تحديث المصفوفة المفلترة
 
         if (certificates.length === 0) {
             container.innerHTML = '<div class="col-12 text-center mt-5"><p class="text-muted">لا توجد شهادات متاحة</p></div>';
@@ -98,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // عرض النافذة المنبثقة
     function showCertificateModal(index) {
         currentCertificateIndex = index;
-        const cert = certificates[index];
+        const cert = displayedCertificates[index]; // استخدام المصفوفة المفلترة
         
         document.getElementById('modalCertificateImage').src = cert['certificate url'];
         document.getElementById('modalEmployeeName').textContent = cert['Column1.employee_name'] || 'غير محدد';
@@ -112,12 +115,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // التنقل بين الشهادات
     document.getElementById('prevCertificate').addEventListener('click', function() {
-        currentCertificateIndex = (currentCertificateIndex - 1 + certificates.length) % certificates.length;
+        currentCertificateIndex = (currentCertificateIndex - 1 + displayedCertificates.length) % displayedCertificates.length;
         showCertificateModal(currentCertificateIndex);
     });
 
     document.getElementById('nextCertificate').addEventListener('click', function() {
-        currentCertificateIndex = (currentCertificateIndex + 1) % certificates.length;
+        currentCertificateIndex = (currentCertificateIndex + 1) % displayedCertificates.length;
         showCertificateModal(currentCertificateIndex);
     });
 
@@ -141,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedDepartment = departmentFilter.value;
 
-        const filtered = certificates.filter(cert => {
+        const filtered = allCertificates.filter(cert => {
             const matchesSearch = 
                 (cert['Column1.employee_name']?.toLowerCase().includes(searchTerm) || 
                 cert['Column1.employee_courses_degree.certificate_name']?.toLowerCase().includes(searchTerm));

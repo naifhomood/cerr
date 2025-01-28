@@ -13,7 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('data/certificates.json')
         .then(response => response.json())
         .then(data => {
-            allCertificates = data.filter(cert => cert['certificate url'] && cert['certificate url'].trim() !== '');
+            // إضافة معرف فريد لكل شهادة
+            allCertificates = data
+                .filter(cert => cert['certificate url'] && cert['certificate url'].trim() !== '')
+                .map((cert, index) => ({
+                    ...cert,
+                    uniqueId: `cert_${index}_${Date.now()}`
+                }));
             displayedCertificates = [...allCertificates];
             updateFilters(allCertificates);
             displayCertificates(displayedCertificates);
@@ -63,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayCertificates(certificates) {
         const container = document.getElementById('certificatesContainer');
         container.innerHTML = '';
-        displayedCertificates = certificates; // تحديث المصفوفة المفلترة
+        displayedCertificates = certificates;
 
         if (certificates.length === 0) {
             container.innerHTML = '<div class="col-12 text-center mt-5"><p class="text-muted">لا توجد شهادات متاحة</p></div>';
@@ -71,16 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        certificates.forEach((cert, index) => {
+        certificates.forEach((cert) => {
             if (cert['certificate url'] && cert['certificate url'].trim() !== '') {
                 let cardHtml = certificateTemplate
-                    .replace('%employee_name%', cert['Column1.employee_name'] || 'غير محدد')
-                    .replace('%department%', cert['Column1.department'] || 'غير محدد')
-                    .replace('%designation%', cert['Column1.designation'] || 'غير محدد')
-                    .replace('%certificate_name%', cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد')
-                    .replace('%certificate_date%', formatDate(cert['Column1.employee_courses_degree.certificate_date']))
-                    .replace('%certificate_image%', cert['certificate url'])
-                    .replace('%index%', index);
+                    .replace(/%employee_name%/g, cert['Column1.employee_name'] || 'غير محدد')
+                    .replace(/%department%/g, cert['Column1.department'] || 'غير محدد')
+                    .replace(/%designation%/g, cert['Column1.designation'] || 'غير محدد')
+                    .replace(/%certificate_name%/g, cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد')
+                    .replace(/%certificate_date%/g, formatDate(cert['Column1.employee_courses_degree.certificate_date']))
+                    .replace(/%certificate_image%/g, cert['certificate url'])
+                    .replace(/%unique_id%/g, cert.uniqueId);
 
                 container.innerHTML += cardHtml;
             }
@@ -92,8 +98,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // إضافة معالج النقر على الصور
         document.querySelectorAll('.certificate-image').forEach(img => {
             img.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-certificate-id'));
-                showCertificateModal(index);
+                const uniqueId = this.getAttribute('data-certificate-id');
+                const index = displayedCertificates.findIndex(cert => cert.uniqueId === uniqueId);
+                if (index !== -1) {
+                    showCertificateModal(index);
+                }
             });
         });
     }
@@ -101,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // عرض النافذة المنبثقة
     function showCertificateModal(index) {
         currentCertificateIndex = index;
-        const cert = displayedCertificates[index]; // استخدام المصفوفة المفلترة
+        const cert = displayedCertificates[index];
         
         document.getElementById('modalCertificateImage').src = cert['certificate url'];
         document.getElementById('modalEmployeeName').textContent = cert['Column1.employee_name'] || 'غير محدد';

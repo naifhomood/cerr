@@ -1,0 +1,35 @@
+name: Auto Convert Excel to JSON
+
+on:
+  push:
+    paths:
+      - 'data/certificates.xlsx'
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl
+          
+      - name: Convert Excel to JSON
+        run: python convert_to_json.py
+        
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/certificates.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "تحديث تلقائي للبيانات" && git push)

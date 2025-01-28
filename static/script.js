@@ -1,25 +1,33 @@
-// Load certificates when the page loads
+// تحميل الشهادات عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
     let allCertificates = []; // المصفوفة الأصلية
     let displayedCertificates = []; // المصفوفة المفلترة
     let currentCertificateIndex = 0;
+    
     const searchInput = document.getElementById('searchInput');
     const departmentFilter = document.getElementById('departmentFilter');
     const certificatesCount = document.getElementById('certificatesCount');
     const certificateTemplate = document.getElementById('certificateTemplate').innerHTML;
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
-    
+
     // تحميل البيانات
     fetch('data/certificates.json')
         .then(response => response.json())
         .then(data => {
-            // إضافة معرف فريد لكل شهادة
+            // تنقية البيانات وإضافة معرف فريد
             allCertificates = data
                 .filter(cert => cert['certificate url'] && cert['certificate url'].trim() !== '')
                 .map((cert, index) => ({
                     ...cert,
-                    uniqueId: `cert_${index}_${Date.now()}`
+                    id: index, // إضافة معرف ثابت
+                    employeeName: cert['Column1.employee_name'] || 'غير محدد',
+                    department: cert['Column1.department'] || 'غير محدد',
+                    designation: cert['Column1.designation'] || 'غير محدد',
+                    certificateName: cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد',
+                    certificateDate: cert['Column1.employee_courses_degree.certificate_date'],
+                    certificateUrl: cert['certificate url']
                 }));
+            
             displayedCertificates = [...allCertificates];
             updateFilters(allCertificates);
             displayCertificates(displayedCertificates);
@@ -30,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateFilters(certificates) {
         const departments = new Set();
         certificates.forEach(cert => {
-            if (cert['Column1.department']) {
-                departments.add(cert['Column1.department']);
+            if (cert.department && cert.department !== 'غير محدد') {
+                departments.add(cert.department);
             }
         });
 
@@ -51,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // تحديث عداد الشهادات
     function updateCertificatesCount(count) {
         certificatesCount.textContent = count;
-        
-        // تحديث نص "شهادة" حسب العدد
         const label = document.querySelector('.counter-label');
         if (count === 1) {
             label.textContent = 'شهادة مهنية';
@@ -69,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayCertificates(certificates) {
         const container = document.getElementById('certificatesContainer');
         container.innerHTML = '';
-        displayedCertificates = [...certificates];  
+        displayedCertificates = [...certificates];
 
         if (certificates.length === 0) {
             container.innerHTML = '<div class="col-12 text-center mt-5"><p class="text-muted">لا توجد شهادات متاحة</p></div>';
@@ -77,22 +83,39 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        certificates.forEach((cert, index) => {
-            if (cert['certificate url'] && cert['certificate url'].trim() !== '') {
-                const uniqueId = `cert_${index}_${Date.now()}`;
-                cert.uniqueId = uniqueId;  
-                
-                let cardHtml = certificateTemplate
-                    .replace(/%employee_name%/g, cert['Column1.employee_name'] || 'غير محدد')
-                    .replace(/%department%/g, cert['Column1.department'] || 'غير محدد')
-                    .replace(/%designation%/g, cert['Column1.designation'] || 'غير محدد')
-                    .replace(/%certificate_name%/g, cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد')
-                    .replace(/%certificate_date%/g, formatDate(cert['Column1.employee_courses_degree.certificate_date']))
-                    .replace(/%certificate_image%/g, cert['certificate url'])
-                    .replace(/%unique_id%/g, uniqueId);
-
-                container.innerHTML += cardHtml;
-            }
+        certificates.forEach(cert => {
+            const cardHtml = `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 certificate-card">
+                        <div class="certificate-image-container">
+                            <img src="${cert.certificateUrl}" 
+                                 class="card-img-top certificate-image" 
+                                 alt="شهادة ${cert.employeeName}"
+                                 data-certificate-id="${cert.id}">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-3">${cert.employeeName}</h5>
+                            <p class="card-text mb-2">
+                                <i class="fas fa-building ml-2"></i>
+                                ${cert.department}
+                            </p>
+                            <p class="card-text mb-2">
+                                <i class="fas fa-user-tie ml-2"></i>
+                                ${cert.designation}
+                            </p>
+                            <p class="card-text mb-2">
+                                <i class="fas fa-certificate ml-2"></i>
+                                ${cert.certificateName}
+                            </p>
+                            <p class="card-text">
+                                <i class="fas fa-calendar-alt ml-2"></i>
+                                ${formatDate(cert.certificateDate)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', cardHtml);
         });
 
         updateCertificatesCount(certificates.length);
@@ -100,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // إضافة معالج النقر على الصور
         document.querySelectorAll('.certificate-image').forEach(img => {
             img.addEventListener('click', function() {
-                const uniqueId = this.getAttribute('data-certificate-id');
-                const certIndex = displayedCertificates.findIndex(cert => cert.uniqueId === uniqueId);
+                const certId = parseInt(this.getAttribute('data-certificate-id'));
+                const certIndex = displayedCertificates.findIndex(cert => cert.id === certId);
                 if (certIndex !== -1) {
                     showCertificateModal(certIndex);
                 }
@@ -124,12 +147,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        document.getElementById('modalCertificateImage').src = cert['certificate url'];
-        document.getElementById('modalEmployeeName').textContent = cert['Column1.employee_name'] || 'غير محدد';
-        document.getElementById('modalDepartment').textContent = cert['Column1.department'] || 'غير محدد';
-        document.getElementById('modalDesignation').textContent = cert['Column1.designation'] || 'غير محدد';
-        document.getElementById('modalCertificateName').textContent = cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد';
-        document.getElementById('modalCertificateDate').textContent = formatDate(cert['Column1.employee_courses_degree.certificate_date']);
+        document.getElementById('modalCertificateImage').src = cert.certificateUrl;
+        document.getElementById('modalEmployeeName').textContent = cert.employeeName;
+        document.getElementById('modalDepartment').textContent = cert.department;
+        document.getElementById('modalDesignation').textContent = cert.designation;
+        document.getElementById('modalCertificateName').textContent = cert.certificateName;
+        document.getElementById('modalCertificateDate').textContent = formatDate(cert.certificateDate);
 
         certificateModal.show();
     }
@@ -167,12 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const filtered = allCertificates.filter(cert => {
             const matchesSearch = 
-                (cert['Column1.employee_name']?.toLowerCase().includes(searchTerm) || 
-                cert['Column1.employee_courses_degree.certificate_name']?.toLowerCase().includes(searchTerm));
+                (cert.employeeName.toLowerCase().includes(searchTerm) || 
+                cert.certificateName.toLowerCase().includes(searchTerm));
 
-            const matchesDepartment = !selectedDepartment || cert['Column1.department'] === selectedDepartment;
+            const matchesDepartment = !selectedDepartment || cert.department === selectedDepartment;
 
-            return matchesSearch && matchesDepartment && cert['certificate url'] && cert['certificate url'].trim() !== '';
+            return matchesSearch && matchesDepartment;
         });
 
         displayCertificates(filtered);

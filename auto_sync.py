@@ -17,12 +17,28 @@ logging.basicConfig(
 
 def get_file_hash(filepath):
     """حساب قيمة التجزئة للملف"""
-    with open(filepath, 'rb') as f:
-        return hashlib.md5(f.read()).hexdigest()
+    max_retries = 3
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            with open(filepath, 'rb') as f:
+                return hashlib.md5(f.read()).hexdigest()
+        except PermissionError:
+            if attempt < max_retries - 1:
+                logging.warning(f'الملف مفتوح، محاولة مرة أخرى بعد {retry_delay} ثوانٍ...')
+                time.sleep(retry_delay)
+            else:
+                logging.error('لا يمكن الوصول إلى الملف بعد عدة محاولات')
+                return None
 
 def run_git_commands():
     """تنفيذ أوامر Git"""
     try:
+        # تهيئة Git إذا لم يكن مهيأ
+        subprocess.run(['git', 'config', '--global', 'user.email', 'naifhomood@gmail.com'], check=True)
+        subprocess.run(['git', 'config', '--global', 'user.name', 'naifhomood'], check=True)
+        
         # تهيئة أوامر Git
         commands = [
             ['git', 'add', 'data/certificates.xlsx'],
@@ -32,10 +48,11 @@ def run_git_commands():
         
         # تنفيذ كل أمر
         for cmd in commands:
-            result = subprocess.run(cmd, capture_output=True, text=True)
+            result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8')
             if result.returncode != 0 and 'nothing to commit' not in result.stderr:
                 logging.error(f'خطأ في تنفيذ الأمر {cmd}: {result.stderr}')
                 return False
+            logging.info(f'تم تنفيذ الأمر {cmd[0]} {cmd[1]} بنجاح')
         return True
     except Exception as e:
         logging.error(f'حدث خطأ أثناء تنفيذ أوامر Git: {str(e)}')

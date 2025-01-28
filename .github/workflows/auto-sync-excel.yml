@@ -1,0 +1,68 @@
+name: Auto Sync Excel Data
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # تشغيل كل ساعة
+  workflow_dispatch:  # للتشغيل اليدوي عند الحاجة
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl requests
+          
+      - name: Download and Convert Excel
+        env:
+          EXCEL_URL: ${{ secrets.EXCEL_URL }}
+        run: |
+          python - <<EOF
+          import pandas as pd
+          import requests
+          import json
+          from datetime import datetime
+          
+          # تحميل ملف Excel
+          response = requests.get('${{ secrets.EXCEL_URL }}')
+          with open('data/certificates.xlsx', 'wb') as f:
+              f.write(response.content)
+          
+          # تحويل إلى JSON
+          df = pd.read_excel('data/certificates.xlsx', keep_default_na=False)
+          certificates = df.to_dict('records')
+          
+          # معالجة التواريخ
+          for cert in certificates:
+              date_fields = [
+                  'Column1.employee_courses_degree.certificate_date',
+                  'Column1.date_of_joining'
+              ]
+              for field in date_fields:
+                  if field in cert and pd.notnull(cert[field]):
+                      if isinstance(cert[field], datetime):
+                          cert[field] = cert[field].strftime('%Y-%m-%d')
+                      else:
+                          cert[field] = None
+          
+          # حفظ كملف JSON
+          with open('data/certificates.json', 'w', encoding='utf-8') as f:
+              json.dump(certificates, f, ensure_ascii=False, indent=2)
+          EOF
+          
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/certificates.xlsx data/certificates.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "تحديث تلقائي للبيانات من Excel" && git push)

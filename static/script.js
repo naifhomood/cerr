@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayCertificates(certificates) {
         const container = document.getElementById('certificatesContainer');
         container.innerHTML = '';
-        displayedCertificates = certificates;
+        displayedCertificates = [...certificates];  
 
         if (certificates.length === 0) {
             container.innerHTML = '<div class="col-12 text-center mt-5"><p class="text-muted">لا توجد شهادات متاحة</p></div>';
@@ -77,8 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        certificates.forEach((cert) => {
+        certificates.forEach((cert, index) => {
             if (cert['certificate url'] && cert['certificate url'].trim() !== '') {
+                const uniqueId = `cert_${index}_${Date.now()}`;
+                cert.uniqueId = uniqueId;  
+                
                 let cardHtml = certificateTemplate
                     .replace(/%employee_name%/g, cert['Column1.employee_name'] || 'غير محدد')
                     .replace(/%department%/g, cert['Column1.department'] || 'غير محدد')
@@ -86,22 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     .replace(/%certificate_name%/g, cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد')
                     .replace(/%certificate_date%/g, formatDate(cert['Column1.employee_courses_degree.certificate_date']))
                     .replace(/%certificate_image%/g, cert['certificate url'])
-                    .replace(/%unique_id%/g, cert.uniqueId);
+                    .replace(/%unique_id%/g, uniqueId);
 
                 container.innerHTML += cardHtml;
             }
         });
 
-        // تحديث العداد
         updateCertificatesCount(certificates.length);
 
         // إضافة معالج النقر على الصور
         document.querySelectorAll('.certificate-image').forEach(img => {
             img.addEventListener('click', function() {
                 const uniqueId = this.getAttribute('data-certificate-id');
-                const index = displayedCertificates.findIndex(cert => cert.uniqueId === uniqueId);
-                if (index !== -1) {
-                    showCertificateModal(index);
+                const certIndex = displayedCertificates.findIndex(cert => cert.uniqueId === uniqueId);
+                if (certIndex !== -1) {
+                    showCertificateModal(certIndex);
                 }
             });
         });
@@ -109,9 +111,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // عرض النافذة المنبثقة
     function showCertificateModal(index) {
+        if (index < 0 || index >= displayedCertificates.length) {
+            console.error('Invalid certificate index:', index);
+            return;
+        }
+
         currentCertificateIndex = index;
         const cert = displayedCertificates[index];
-        
+
+        if (!cert) {
+            console.error('Certificate not found at index:', index);
+            return;
+        }
+
         document.getElementById('modalCertificateImage').src = cert['certificate url'];
         document.getElementById('modalEmployeeName').textContent = cert['Column1.employee_name'] || 'غير محدد';
         document.getElementById('modalDepartment').textContent = cert['Column1.department'] || 'غير محدد';

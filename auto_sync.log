@@ -3497,3 +3497,17 @@ error: Please commit or stash them.
 2025-01-30 10:08:40,485 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
 2025-01-30 10:08:40,485 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
 2025-01-30 10:08:40,485 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:13:18,466 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:13:18,467 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:13:18,469 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:13:18,469 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:13:18,469 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:13:18,469 - حدث خطأ أثناء تحديث ملف JSON: [Errno 13] Permission denied: 'C:\\Users\\n.al-dhafiri\\OneDrive - rajhifoundation\\سطح المكتب\\cerr\\data\\certificates.xlsx'
+2025-01-30 10:14:43,015 - بدء تشغيل السكريبت في الوضع المباشر
+2025-01-30 10:14:44,330 - تم تحديث ملف JSON بنجاح
+2025-01-30 10:14:44,420 - تم تنفيذ الأمر git بنجاح
+2025-01-30 10:14:44,571 - تم تنفيذ الأمر git بنجاح
+2025-01-30 10:14:44,654 - خطأ في تنفيذ الأمر ['git', 'pull', '--rebase', 'origin', 'main']: error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+
+2025-01-30 10:14:44,654 - فشل في رفع التغييرات إلى GitHub

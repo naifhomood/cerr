@@ -3176,3 +3176,35 @@ remove the file manually to continue.
 2025-01-30 08:13:27,430 - فشل في رفع التغييرات
 2025-01-30 08:13:27,447 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 08:13:27']: 
 2025-01-30 08:13:27,447 - فشل في رفع التغييرات
+2025-01-30 08:13:35,295 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:13:36,517 - حدث خطأ أثناء تنفيذ أوامر Git: Command '['git', 'config', '--global', 'user.email', 'naifhomood@gmail.com']' returned non-zero exit status 255.
+2025-01-30 08:13:36,517 - فشل في رفع التغييرات
+2025-01-30 08:13:37,430 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:13:37,448 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:13:42,886 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 08:13:42']: 
+2025-01-30 08:13:42,886 - فشل في رفع التغييرات
+2025-01-30 08:13:44,619 - خطأ في تنفيذ الأمر ['git', 'push', 'origin', 'main']: To https://github.com/naifhomood/cerr.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/naifhomood/cerr.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+2025-01-30 08:13:44,620 - فشل في رفع التغييرات
+2025-01-30 08:13:45,355 - حدث خطأ أثناء تنفيذ أوامر Git: Command '['git', 'config', '--global', 'user.email', 'naifhomood@gmail.com']' returned non-zero exit status 255.
+2025-01-30 08:13:52,887 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:13:54,622 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:13:58,163 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 08:13:57']: 
+2025-01-30 08:13:58,165 - فشل في رفع التغييرات
+2025-01-30 08:13:59,882 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 08:13:59']: 
+2025-01-30 08:13:59,883 - فشل في رفع التغييرات
+2025-01-30 08:14:06,519 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:14:08,167 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:14:09,884 - تم اكتشاف تغييرات في ملف Excel
+2025-01-30 08:14:13,429 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 08:14:13']: 
+2025-01-30 08:14:13,429 - فشل في رفع التغييرات
+2025-01-30 08:14:15,140 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 08:14:14']: 
+2025-01-30 08:14:15,140 - فشل في رفع التغييرات
+2025-01-30 08:14:15,357 - تم اكتشاف تغييرات في ملف Excel

@@ -74,11 +74,31 @@ class ExcelToJsonHandler(FileSystemEventHandler):
             # انتظار لحين إغلاق ملف الإكسل
             time.sleep(1)
             
-            # قراءة ملف الإكسل
+            # قراءة ملف الإكسل مع التعامل مع القيم الفارغة
             df = pd.read_excel(self.excel_path)
             
-            # تحويل البيانات إلى قائمة من القواميس
+            # معالجة القيم الفارغة
+            df = df.fillna('')  # تحويل NaN إلى نص فارغ
+            
+            # تحويل البيانات إلى قائمة من القواميس مع الحفاظ على التنسيق
             data = df.to_dict('records')
+            
+            # التأكد من وجود جميع الأعمدة المطلوبة
+            required_columns = [
+                'Column1.name', 'Column1.department', 'Column1.employee_name',
+                'Column1.employee_courses_degree.certificate_name',
+                'Column1.employee_courses_degree.certificate_date',
+                'Column1.user_id', 'Column1.gender', 'Column1.date_of_joining',
+                'Column1.designation', 'Column1.branch',
+                'Column1.employee_courses_degree.attach_the_certificate',
+                'urlnext', 'certificate url'
+            ]
+            
+            # إضافة الأعمدة المفقودة إذا لم تكن موجودة
+            for record in data:
+                for col in required_columns:
+                    if col not in record:
+                        record[col] = ''
             
             # حفظ البيانات في ملف JSON
             with open(self.json_path, 'w', encoding='utf-8') as f:

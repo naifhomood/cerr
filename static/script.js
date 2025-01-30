@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let allCertificates = []; // المصفوفة الأصلية
     let displayedCertificates = []; // المصفوفة المفلترة
     let currentCertificateIndex = 0;
+    let years = new Set();
     
     const searchInput = document.getElementById('searchInput');
     const departmentFilter = document.getElementById('departmentFilter');
+    const yearFilter = document.getElementById('yearFilter');
     const certificatesCount = document.getElementById('certificatesCount');
     const certificateTemplate = document.getElementById('certificateTemplate').innerHTML;
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
@@ -28,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     certificateUrl: cert['certificate url']
                 }));
             
+            // استخراج السنوات
+            allCertificates.forEach(cert => {
+                if (cert.certificateDate) {
+                    const year = new Date(cert.certificateDate).getFullYear();
+                    if (!isNaN(year)) {
+                        years.add(year);
+                    }
+                }
+            });
+
             displayedCertificates = [...allCertificates];
             updateFilters(allCertificates);
             displayCertificates(displayedCertificates);
@@ -53,6 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
             option.value = dept;
             option.textContent = dept;
             departmentFilter.appendChild(option);
+        });
+
+        // ملء قائمة السنوات
+        yearFilter.innerHTML = '<option value="">كل السنوات</option>';
+        [...years].sort((a, b) => b - a).forEach(year => {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearFilter.appendChild(option);
         });
     }
 
@@ -187,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function filterCertificates() {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedDepartment = departmentFilter.value;
+        const selectedYear = yearFilter.value;
 
         const filtered = allCertificates.filter(cert => {
             const matchesSearch = 
@@ -195,7 +217,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const matchesDepartment = !selectedDepartment || cert.department === selectedDepartment;
 
-            return matchesSearch && matchesDepartment;
+            let certYear = null;
+            if (cert.certificateDate) {
+                certYear = new Date(cert.certificateDate).getFullYear().toString();
+            }
+            const matchesYear = !selectedYear || certYear === selectedYear;
+
+            return matchesSearch && matchesDepartment && matchesYear;
         });
 
         displayCertificates(filtered);
@@ -204,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // إضافة مستمعي الأحداث
     searchInput.addEventListener('input', filterCertificates);
     departmentFilter.addEventListener('change', filterCertificates);
+    yearFilter.addEventListener('change', filterCertificates);
 
     // إضافة دعم لوحة المفاتيح للتنقل
     document.addEventListener('keydown', function(e) {

@@ -29,11 +29,10 @@ def git_push_changes():
         
         # تنفيذ أوامر Git
         commands = [
-            ['gh', 'auth', 'status'],  # التحقق من حالة المصادقة
             ['git', 'add', 'data/certificates.json'],
             ['git', 'commit', '-m', f'تحديث تلقائي للبيانات - {time.strftime("%Y-%m-%d %H:%M:%S")}'],
             ['git', 'pull', '--rebase', 'origin', 'main'],
-            ['gh', 'repo', 'sync']  # مزامنة المستودع باستخدام GitHub CLI
+            ['git', 'push', 'origin', 'main']  # استخدام git push بدلاً من gh repo sync
         ]
         
         for cmd in commands:
@@ -41,9 +40,6 @@ def git_push_changes():
             if result.returncode != 0:
                 if cmd[0] == 'git' and 'nothing to commit' in result.stderr:
                     continue  # تجاهل رسالة "nothing to commit"
-                elif cmd[0] == 'gh' and 'auth status' in ' '.join(cmd):
-                    logging.error('يرجى تسجيل الدخول إلى GitHub CLI أولاً باستخدام الأمر: gh auth login')
-                    return False
                 else:
                     logging.error(f'خطأ في تنفيذ الأمر {cmd}: {result.stderr}')
                     return False

@@ -74,31 +74,47 @@ class ExcelToJsonHandler(FileSystemEventHandler):
             # انتظار لحين إغلاق ملف الإكسل
             time.sleep(1)
             
-            # قراءة ملف الإكسل مع التعامل مع القيم الفارغة
+            # قراءة ملف الإكسل مع تحديد أسماء الأعمدة
             df = pd.read_excel(self.excel_path)
+            
+            # إعادة تسمية الأعمدة
+            column_mapping = {
+                'Column1.name': 'name',
+                'Column1.department': 'department',
+                'Column1.employee_name': 'employee_name',
+                'Column1.employee_courses_degree.certificate_name': 'employee_courses_degree.certificate_name',
+                'Column1.employee_courses_degree.certificate_date': 'employee_courses_degree.certificate_date',
+                'Column1.user_id': 'user_id',
+                'Column1.gender': 'gender',
+                'Column1.date_of_joining': 'date_of_joining',
+                'Column1.designation': 'designation',
+                'Column1.branch': 'branch',
+                'Column1.employee_courses_degree.attach_the_certificate': 'employee_courses_degree.attach_the_certificate'
+            }
+            
+            df = df.rename(columns=column_mapping)
             
             # معالجة القيم الفارغة
             df = df.fillna('')  # تحويل NaN إلى نص فارغ
             
-            # تحويل البيانات إلى قائمة من القواميس مع الحفاظ على التنسيق
+            # إضافة الأعمدة المفقودة
+            for col in column_mapping.values():
+                if col not in df.columns:
+                    df[col] = ''
+                    
+            # إضافة عمود urlnext إذا لم يكن موجوداً
+            if 'urlnext' not in df.columns:
+                df['urlnext'] = 'https://next.rajhifoundation.org'
+                
+            # إضافة عمود certificate url إذا لم يكن موجوداً
+            if 'certificate url' not in df.columns:
+                df['certificate url'] = df.apply(lambda row: 
+                    f"https://next.rajhifoundation.org{row['employee_courses_degree.attach_the_certificate']}"
+                    if row['employee_courses_degree.attach_the_certificate']
+                    else '', axis=1)
+            
+            # تحويل البيانات إلى قائمة من القواميس
             data = df.to_dict('records')
-            
-            # التأكد من وجود جميع الأعمدة المطلوبة
-            required_columns = [
-                'Column1.name', 'Column1.department', 'Column1.employee_name',
-                'Column1.employee_courses_degree.certificate_name',
-                'Column1.employee_courses_degree.certificate_date',
-                'Column1.user_id', 'Column1.gender', 'Column1.date_of_joining',
-                'Column1.designation', 'Column1.branch',
-                'Column1.employee_courses_degree.attach_the_certificate',
-                'urlnext', 'certificate url'
-            ]
-            
-            # إضافة الأعمدة المفقودة إذا لم تكن موجودة
-            for record in data:
-                for col in required_columns:
-                    if col not in record:
-                        record[col] = ''
             
             # حفظ البيانات في ملف JSON
             with open(self.json_path, 'w', encoding='utf-8') as f:

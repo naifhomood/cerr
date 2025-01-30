@@ -1,11 +1,17 @@
 import os
 import time
 import logging
-import subprocess
+import pandas as pd
+import json
+import win32serviceutil
+import win32service
+import win32event
+import servicemanager
+from pathlib import Path
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-from pathlib import Path
-import shutil
+import sys
+import subprocess
 
 # إعداد التسجيل
 logging.basicConfig(
@@ -15,124 +21,158 @@ logging.basicConfig(
     encoding='utf-8'
 )
 
-def check_and_remove_lock_files():
-    """التحقق من وجود ملفات القفل وإزالتها إذا كانت قديمة"""
-    git_dir = Path('.git')
-    lock_files = [
-        git_dir / 'index.lock',
-        git_dir / '.MERGE_MSG.swp',
-        git_dir / 'MERGE_HEAD'
-    ]
-    
-    for lock_file in lock_files:
-        if lock_file.exists():
-            try:
-                # التحقق من عمر الملف
-                file_age = time.time() - lock_file.stat().st_mtime
-                if file_age > 300:  # 5 دقائق
-                    lock_file.unlink()
-                    logging.info(f'تم حذف ملف القفل القديم: {lock_file}')
-            except Exception as e:
-                logging.error(f'خطأ في حذف ملف القفل: {e}')
-
-def wait_for_file_access(file_path, timeout=60):
-    """الانتظار حتى يكون الملف متاحاً للوصول"""
-    start_time = time.time()
-    while time.time() - start_time < timeout:
-        try:
-            with open(file_path, 'rb') as f:
-                return True
-        except PermissionError:
-            time.sleep(1)
-    return False
-
-def run_git_command(command, retries=3, delay=5):
-    """تنفيذ أمر Git مع إعادة المحاولة"""
-    for attempt in range(retries):
-        try:
-            check_and_remove_lock_files()
-            result = subprocess.run(command, check=True, capture_output=True, text=True)
-            logging.info(f'تم تنفيذ الأمر {command[0]} بنجاح')
-            return True
-        except subprocess.CalledProcessError as e:
-            logging.error(f'خطأ في تنفيذ الأمر {command}: {e.stderr}')
-            if attempt < retries - 1:
-                logging.info(f'فشلت المحاولة {attempt + 1} من {retries}. إعادة المحاولة بعد {delay} ثانية...')
-                time.sleep(delay)
-                delay *= 2  # مضاعفة وقت الانتظار مع كل محاولة
-            else:
-                logging.error('فشلت جميع المحاولات')
-                return False
-        except Exception as e:
-            logging.error(f'خطأ غير متوقع: {e}')
-            return False
-
-def run_git_commands():
-    """تنفيذ أوامر Git"""
+def git_push_changes():
+    """دالة لرفع التغييرات إلى GitHub"""
     try:
-        # التأكد من عدم وجود تغييرات غير مرحلة
-        run_git_command(['git', 'stash'])
+        # تحديد مسار المجلد
+        base_dir = Path(__file__).parent
         
-        # تحديث من المستودع البعيد
-        run_git_command(['git', 'fetch', 'origin'])
-        run_git_command(['git', 'pull', '--rebase', 'origin', 'main'])
+        # تنفيذ أوامر Git
+        commands = [
+            ['gh', 'auth', 'status'],  # التحقق من حالة المصادقة
+            ['git', 'add', 'data/certificates.json'],
+            ['git', 'commit', '-m', f'تحديث تلقائي للبيانات - {time.strftime("%Y-%m-%d %H:%M:%S")}'],
+            ['git', 'pull', '--rebase', 'origin', 'main'],
+            ['gh', 'repo', 'sync']  # مزامنة المستودع باستخدام GitHub CLI
+        ]
         
-        # إضافة الملفات
-        if run_git_command(['git', 'add', 'data/certificates.xlsx']) and \
-           run_git_command(['git', 'add', 'data/certificates.json']):
-            
-            # عمل commit
-            commit_msg = f'تحديث تلقائي للبيانات - {time.strftime("%Y-%m-%d %H:%M:%S")}'
-            if run_git_command(['git', 'commit', '-m', commit_msg]):
-                
-                # رفع التغييرات
-                if run_git_command(['git', 'push', 'origin', 'main']):
-                    logging.info('تم رفع التغييرات بنجاح')
-                    return True
+        for cmd in commands:
+            result = subprocess.run(cmd, cwd=str(base_dir), capture_output=True, text=True)
+            if result.returncode != 0:
+                if cmd[0] == 'git' and 'nothing to commit' in result.stderr:
+                    continue  # تجاهل رسالة "nothing to commit"
+                elif cmd[0] == 'gh' and 'auth status' in ' '.join(cmd):
+                    logging.error('يرجى تسجيل الدخول إلى GitHub CLI أولاً باستخدام الأمر: gh auth login')
+                    return False
+                else:
+                    logging.error(f'خطأ في تنفيذ الأمر {cmd}: {result.stderr}')
+                    return False
+            else:
+                logging.info(f'تم تنفيذ الأمر {cmd[0]} بنجاح')
         
-        logging.error('فشل في رفع التغييرات')
-        return False
+        return True
     except Exception as e:
-        logging.error(f'حدث خطأ أثناء تنفيذ أوامر Git: {e}')
+        logging.error(f'خطأ في رفع التغييرات إلى GitHub: {str(e)}')
         return False
 
-class FileChangeHandler(FileSystemEventHandler):
-    def __init__(self):
+class ExcelToJsonHandler(FileSystemEventHandler):
+    def __init__(self, excel_path, json_path):
+        self.excel_path = excel_path
+        self.json_path = json_path
         self.last_modified = 0
-        self.cooldown = 5  # فترة الانتظار بين التحديثات (بالثواني)
+        self.cooldown = 2  # فترة الانتظار بين التحديثات (بالثواني)
 
     def on_modified(self, event):
-        if event.src_path.endswith('certificates.xlsx'):
+        if not event.is_directory and event.src_path == self.excel_path:
             current_time = time.time()
-            if current_time - self.last_modified < self.cooldown:
-                return
-            
-            self.last_modified = current_time
-            logging.info('تم اكتشاف تغييرات في ملف Excel')
-            
-            # انتظار حتى يكون الملف متاحاً
-            if not wait_for_file_access(event.src_path):
-                logging.error('تعذر الوصول إلى الملف - تخطي هذا التحديث')
-                return
-                
-            try:
-                # تشغيل سكريبت التحويل
-                subprocess.run(['python', 'convert.py'], check=True)
-                # رفع التغييرات
-                run_git_commands()
-            except subprocess.CalledProcessError as e:
-                logging.error(f'خطأ في تنفيذ الأمر: {e}')
+            if current_time - self.last_modified > self.cooldown:
+                self.last_modified = current_time
+                self.update_json()
 
-if __name__ == "__main__":
-    # إنشاء المراقب
-    event_handler = FileChangeHandler()
-    observer = Observer()
-    observer.schedule(event_handler, path='data', recursive=False)
-    observer.start()
-
-    try:
-        while True:
+    def update_json(self):
+        try:
+            # انتظار لحين إغلاق ملف الإكسل
             time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
+            
+            # قراءة ملف الإكسل
+            df = pd.read_excel(self.excel_path)
+            
+            # تحويل البيانات إلى قائمة من القواميس
+            data = df.to_dict('records')
+            
+            # حفظ البيانات في ملف JSON
+            with open(self.json_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            logging.info('تم تحديث ملف JSON بنجاح')
+            
+            # رفع التغييرات إلى GitHub
+            if git_push_changes():
+                logging.info('تم رفع التغييرات إلى GitHub بنجاح')
+            else:
+                logging.error('فشل في رفع التغييرات إلى GitHub')
+                
+        except Exception as e:
+            logging.error(f'حدث خطأ أثناء تحديث ملف JSON: {str(e)}')
+
+class AutoSyncService(win32serviceutil.ServiceFramework):
+    _svc_name_ = "CertificatesAutoSync"
+    _svc_display_name_ = "Certificates Auto Sync Service"
+    _svc_description_ = "خدمة المزامنة التلقائية لشهادات المتدربين"
+
+    def __init__(self, args):
+        win32serviceutil.ServiceFramework.__init__(self, args)
+        self.stop_event = win32event.CreateEvent(None, 0, 0, None)
+        self.observer = None
+
+    def SvcStop(self):
+        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
+        win32event.SetEvent(self.stop_event)
+        if self.observer:
+            self.observer.stop()
+
+    def SvcDoRun(self):
+        try:
+            servicemanager.LogMsg(
+                servicemanager.EVENTLOG_INFORMATION_TYPE,
+                servicemanager.PID_INFO,
+                ('Service started.')
+            )
+            
+            # تحديد مسارات الملفات
+            base_dir = Path(__file__).parent
+            excel_path = str(base_dir / 'data' / 'certificates.xlsx')
+            json_path = str(base_dir / 'data' / 'certificates.json')
+            
+            # إعداد المراقب
+            event_handler = ExcelToJsonHandler(excel_path, json_path)
+            self.observer = Observer()
+            self.observer.schedule(event_handler, str(Path(excel_path).parent), recursive=False)
+            self.observer.start()
+            
+            # انتظار إشارة التوقف
+            win32event.WaitForSingleObject(self.stop_event, win32event.INFINITE)
+            
+        except Exception as e:
+            logging.error(f'خطأ في تشغيل الخدمة: {str(e)}')
+            servicemanager.LogErrorMsg(str(e))
+
+def run_as_script():
+    """تشغيل البرنامج كسكريبت عادي"""
+    try:
+        print("بدء مراقبة ملف Excel...")
+        logging.info("بدء تشغيل السكريبت في الوضع المباشر")
+        
+        # تحديد مسارات الملفات
+        base_dir = Path(__file__).parent
+        excel_path = str(base_dir / 'data' / 'certificates.xlsx')
+        json_path = str(base_dir / 'data' / 'certificates.json')
+        
+        # إعداد المراقب
+        event_handler = ExcelToJsonHandler(excel_path, json_path)
+        observer = Observer()
+        observer.schedule(event_handler, str(Path(excel_path).parent), recursive=False)
+        observer.start()
+        
+        # تحديث الملف مباشرة عند البدء
+        event_handler.update_json()
+        
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            observer.stop()
+            print("\nتم إيقاف المراقبة.")
+        
+        observer.join()
+        
+    except Exception as e:
+        logging.error(f'خطأ في تشغيل السكريبت: {str(e)}')
+        print(f'حدث خطأ: {str(e)}')
+
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        win32serviceutil.HandleCommandLine(AutoSyncService)
+    else:
+        # تشغيل كسكريبت عادي
+        run_as_script()

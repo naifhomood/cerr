@@ -1,4 +1,25 @@
-.venv/
+# Python
 __pycache__/
-*.pyc
-auto_sync.log
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Project specific
+data/*.json
+!data/certificates.json

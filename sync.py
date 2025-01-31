@@ -30,7 +30,7 @@ def update_json():
         df = pd.read_excel(excel_file, engine='openpyxl')
         print(f"تم قراءة {len(df)} سجل")
         
-        # تنظيف البيانات
+        # تنظيف البيانات وتصحيح أسماء الأعمدة
         df = df.fillna('')
         
         # تحويل إلى JSON

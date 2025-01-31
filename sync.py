@@ -36,44 +36,55 @@ def update_json():
         # تحويل إلى JSON
         data = []
         for _, row in df.iterrows():
-            cert_name = clean_text(row['Column1.employee_courses_degree.certificate_name'])
-            cert_date = format_date(row['Column1.employee_courses_degree.certificate_date'])
-            cert_path = clean_text(row['Column1.employee_courses_degree.attach_the_certificate'])
+            # قراءة البيانات من الأعمدة
+            name = clean_text(row.get('Column1.name', ''))
+            department = clean_text(row.get('Column1.department', ''))
+            employee_name = clean_text(row.get('Column1.employee_name', ''))
+            user_id = clean_text(row.get('Column1.user_id', ''))
+            gender = clean_text(row.get('Column1.gender', ''))
+            date_of_joining = format_date(row.get('Column1.date_of_joining', ''))
+            designation = clean_text(row.get('Column1.designation', ''))
+            branch = clean_text(row.get('Column1.branch', ''))
             
+            # بيانات الشهادة
+            cert_name = clean_text(row.get('Column1.employee_courses_degree.certificate_name', ''))
+            cert_date = format_date(row.get('Column1.employee_courses_degree.certificate_date', ''))
+            cert_path = clean_text(row.get('Column1.employee_courses_degree.attach_the_certificate', ''))
+            
+            # تجميع البيانات في القالب المطلوب
             entry = {
-                'name': clean_text(row['Column1.name']),
-                'department': clean_text(row['Column1.department']),
-                'employee_name': clean_text(row['Column1.employee_name']),
+                'name': name,
+                'department': department,
+                'employee_name': employee_name,
+                'user_id': user_id,
+                'gender': gender,
+                'date_of_joining': date_of_joining,
+                'designation': designation,
+                'branch': branch,
                 'employee_courses_degree': {
                     'certificate_name': cert_name,
                     'certificate_date': cert_date,
                     'attach_the_certificate': cert_path
                 },
-                'user_id': clean_text(row['Column1.user_id']),
-                'gender': clean_text(row['Column1.gender']),
-                'date_of_joining': format_date(row['Column1.date_of_joining']),
-                'designation': clean_text(row.get('Column1.designation', '')),
-                'branch': clean_text(row.get('Column1.branch', '')),
-                'urlnext': 'https://next.rajhifoundation.org',
-                'certificate_url': f"https://next.rajhifoundation.org{cert_path}" if cert_path else ''
+                'urlnext': 'https://next.rajhifoundation.org'
             }
+            
+            # إضافة رابط الشهادة إذا وجد
+            if cert_path:
+                entry['certificate_url'] = f"https://next.rajhifoundation.org{cert_path}"
+            else:
+                entry['certificate_url'] = ''
             
             data.append(entry)
         
-        # حفظ الملف
+        # حفظ الملف بترتيب وتنسيق مناسب
         print(f"\nحفظ إلى: {json_file}")
         with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+            json.dump(data, f, ensure_ascii=False, indent=2, sort_keys=True)
         
         print("✅ تم التحديث بنجاح")
-        
-        # تنفيذ أوامر Git
-        os.system('git add data/certificates.json')
-        os.system(f'git commit -m "تحديث بنية البيانات وإصلاح التنسيق - {time.strftime("%Y-%m-%d %H:%M:%S")}"')
-        os.system('git pull --rebase origin main')
-        os.system('git push origin main')
-        
         return True
+        
     except Exception as e:
         print(f"❌ خطأ: {str(e)}")
         return False

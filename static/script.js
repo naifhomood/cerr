@@ -13,21 +13,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
 
     // تحميل البيانات
-    fetch('data/certificates.json')
+    fetch('/api/certificates')
         .then(response => response.json())
         .then(data => {
             // تنقية البيانات وإضافة معرف فريد
             allCertificates = data
-                .filter(cert => cert['certificate url'] && cert['certificate url'].trim() !== '')
+                .filter(cert => cert.certificate_url && cert.certificate_url.trim() !== '')
                 .map((cert, index) => ({
                     ...cert,
                     id: index, // إضافة معرف ثابت
-                    employeeName: cert['Column1.employee_name'] || 'غير محدد',
-                    department: cert['Column1.department'] || 'غير محدد',
-                    designation: cert['Column1.designation'] || 'غير محدد',
-                    certificateName: cert['Column1.employee_courses_degree.certificate_name'] || 'غير محدد',
-                    certificateDate: cert['Column1.employee_courses_degree.certificate_date'],
-                    certificateUrl: cert['certificate url']
+                    employeeName: cert.employee_name || 'غير محدد',
+                    department: cert.department || 'غير محدد',
+                    designation: cert.designation || 'غير محدد',
+                    certificateName: cert.employee_courses_degree.certificate_name || 'غير محدد',
+                    certificateDate: cert.employee_courses_degree.certificate_date,
+                    certificateUrl: cert.certificate_url
                 }));
             
             // استخراج السنوات

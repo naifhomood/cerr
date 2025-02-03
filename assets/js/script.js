@@ -13,6 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const certificateTemplate = document.getElementById('certificateTemplate').innerHTML;
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
 
+    // إضافة زر التحديث في أعلى الصفحة
+    const filterRow = document.querySelector('.row.mb-4');
+    const refreshButton = document.createElement('div');
+    refreshButton.className = 'col-md-2';
+    refreshButton.innerHTML = `
+        <button class="btn btn-primary w-100" onclick="window.location.reload()">
+            <i class="fas fa-sync-alt"></i>
+            تحديث البيانات
+        </button>
+    `;
+    filterRow.insertBefore(refreshButton, filterRow.firstChild);
+
     // دالة تحديث البيانات
     async function updateData() {
         try {
@@ -28,47 +40,54 @@ document.addEventListener('DOMContentLoaded', function() {
             lastModified = currentModified;
             
             // تحميل البيانات من ملف Excel
-            const dataResponse = await fetch('data/certificates.xlsx');
-            const buffer = await dataResponse.arrayBuffer();
-            const workbook = XLSX.read(buffer, { type: 'array' });
-            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-            const data = XLSX.utils.sheet_to_json(worksheet);
-            
-            // تنقية البيانات وإضافة معرف فريد
-            allCertificates = data
-                .filter(cert => 
-                    cert['اسم الشهادة'] && 
-                    cert['تاريخ الشهادة']
-                )
-                .map((cert, index) => ({
-                    id: index,
-                    الاسم: cert['اسم الموظف'] || 'غير محدد',
-                    الإدارة: cert['القسم'] || 'غير محدد',
-                    المسمى_الوظيفي: cert['المسمى الوظيفي'] || 'غير محدد',
-                    اسم_الشهادة: cert['اسم الشهادة'] || 'غير محدد',
-                    تاريخ_الشهادة: cert['تاريخ الشهادة'],
-                    رابط_الشهادة: cert['رابط الشهادة'] || '',
-                    الفرع: cert['الفرع'] || 'غير محدد',
-                    تاريخ_الانضمام: cert['تاريخ الانضمام'] || 'غير محدد'
-                }));
-            
-            // تحديث السنوات
-            years.clear();
-            allCertificates.forEach(cert => {
-                if (cert.تاريخ_الشهادة) {
-                    const year = new Date(cert.تاريخ_الشهادة).getFullYear();
-                    if (!isNaN(year)) {
-                        years.add(year);
-                    }
-                }
-            });
+            fetch('data/certificates.xlsx')
+                .then(response => response.arrayBuffer())
+                .then(buffer => {
+                    const workbook = XLSX.read(buffer, { type: 'array' });
+                    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const data = XLSX.utils.sheet_to_json(worksheet);
+                    
+                    console.log('Excel Data:', data); // للتحقق من البيانات
 
-            displayedCertificates = [...allCertificates];
-            updateFilters(allCertificates);
-            displayCertificates(displayedCertificates);
-            
-            // إظهار رسالة نجاح التحديث
-            showUpdateMessage('تم تحديث البيانات بنجاح');
+                    // تنقية البيانات وإضافة معرف فريد
+                    allCertificates = data.map((cert, index) => ({
+                        id: index,
+                        الاسم: cert['اسم الموظف'] || cert['employee_name'] || 'غير محدد',
+                        الإدارة: cert['القسم'] || cert['department'] || 'غير محدد',
+                        المسمى_الوظيفي: cert['المسمى الوظيفي'] || cert['designation'] || 'غير محدد',
+                        اسم_الشهادة: cert['اسم الشهادة'] || (cert.employee_courses_degree && cert.employee_courses_degree.certificate_name) || 'غير محدد',
+                        تاريخ_الشهادة: cert['تاريخ الشهادة'] || (cert.employee_courses_degree && cert.employee_courses_degree.certificate_date) || cert['date_of_joining'] || 'غير محدد',
+                        رابط_الشهادة: cert['رابط الشهادة'] || cert['certificate_url'] || '',
+                        الفرع: cert['الفرع'] || cert['branch'] || 'غير محدد',
+                        تاريخ_الانضمام: cert['تاريخ الانضمام'] || cert['date_of_joining'] || 'غير محدد'
+                    }));
+
+                    // فلترة السجلات التي تحتوي على شهادات
+                    allCertificates = allCertificates.filter(cert => 
+                        cert.اسم_الشهادة !== 'غير محدد' || 
+                        cert.رابط_الشهادة
+                    );
+                    
+                    console.log('Processed Certificates:', allCertificates); // للتحقق من البيانات بعد المعالجة
+
+                    // استخراج السنوات
+                    allCertificates.forEach(cert => {
+                        if (cert.تاريخ_الشهادة && cert.تاريخ_الشهادة !== 'غير محدد') {
+                            const year = new Date(cert.تاريخ_الشهادة).getFullYear();
+                            if (!isNaN(year)) {
+                                years.add(year);
+                            }
+                        }
+                    });
+
+                    displayedCertificates = [...allCertificates];
+                    updateFilters(allCertificates);
+                    displayCertificates(displayedCertificates);
+                })
+                .catch(error => {
+                    console.error('Error loading Excel file:', error);
+                    alert('حدث خطأ أثناء تحميل البيانات. يرجى التحقق من وجود ملف Excel في المجلد الصحيح.');
+                });
         } catch (error) {
             console.error('Error:', error);
             showUpdateMessage('حدث خطأ أثناء تحديث البيانات', true);
@@ -97,18 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // التحديث الأولي للبيانات
     updateData();
-
-    // إضافة زر التحديث في أعلى الصفحة
-    const filterRow = document.querySelector('.row.mb-4');
-    const refreshButton = document.createElement('div');
-    refreshButton.className = 'col-md-2';
-    refreshButton.innerHTML = `
-        <button class="btn btn-primary w-100" onclick="location.reload()">
-            <i class="fas fa-sync-alt"></i>
-            تحديث البيانات
-        </button>
-    `;
-    filterRow.insertBefore(refreshButton, filterRow.firstChild);
 
     // تحديث قائمة الإدارات
     function updateFilters(certificates) {

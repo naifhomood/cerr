@@ -60,14 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         console.log('Processing certificate:', cert); // للتحقق من كل شهادة
                         return {
                             id: index,
-                            الاسم: cert['اسم الموظف'] || cert['employee_name'] || cert['الاسم'] || 'غير محدد',
-                            الإدارة: cert['القسم'] || cert['department'] || cert['الإدارة'] || 'غير محدد',
-                            المسمى_الوظيفي: cert['المسمى الوظيفي'] || cert['designation'] || cert['المسمى'] || 'غير محدد',
-                            اسم_الشهادة: cert['اسم الشهادة'] || cert['certificate_name'] || cert['الشهادة'] || 'غير محدد',
-                            تاريخ_الشهادة: cert['تاريخ الشهادة'] || cert['certificate_date'] || cert['التاريخ'] || 'غير محدد',
-                            رابط_الشهادة: cert['رابط الشهادة'] || cert['certificate_url'] || cert['الرابط'] || '',
-                            الفرع: cert['الفرع'] || cert['branch'] || 'غير محدد',
-                            تاريخ_الانضمام: cert['تاريخ الانضمام'] || cert['date_of_joining'] || cert['تاريخ التعيين'] || 'غير محدد'
+                            الاسم: cert['Column1.name'] || cert['Column1.employee_name'] || 'غير محدد',
+                            الإدارة: cert['Column1.department'] || 'غير محدد',
+                            المسمى_الوظيفي: cert['Column1.designation'] || 'غير محدد',
+                            اسم_الشهادة: cert['Column1.name'] || 'غير محدد',
+                            تاريخ_الشهادة: cert['Column1.date_of_joining'] || 'غير محدد',
+                            رابط_الشهادة: cert['urlnext'] || '',
+                            الفرع: cert['Column1.branch'] || 'غير محدد',
+                            تاريخ_الانضمام: cert['Column1.date_of_joining'] || 'غير محدد',
+                            الجنس: cert['Column1.gender'] || 'غير محدد'
                         };
                     });
 
@@ -80,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // استخراج السنوات
                     displayedCertificates.forEach(cert => {
-                        if (cert.تاريخ_الشهادة && cert.تاريخ_الشهادة !== 'غير محدد') {
-                            const year = new Date(cert.تاريخ_الشهادة).getFullYear();
+                        if (cert.تاريخ_الانضمام && cert.تاريخ_الانضمام !== 'غير محدد') {
+                            const year = new Date(cert.تاريخ_الانضمام).getFullYear();
                             if (!isNaN(year)) {
                                 years.add(year);
                             }
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .replace(/%department%/g, cert.الإدارة)
                 .replace(/%designation%/g, cert.المسمى_الوظيفي)
                 .replace(/%certificate_name%/g, cert.اسم_الشهادة)
-                .replace(/%certificate_date%/g, formatDate(cert.تاريخ_الشهادة));
+                .replace(/%certificate_date%/g, formatDate(cert.تاريخ_الانضمام));
 
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = cardHtml;
@@ -230,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </p>
                             <p class="card-text">
                                 <i class="fas fa-calendar-alt ml-2"></i>
-                                ${formatDate(cert.تاريخ_الشهادة)}
+                                ${formatDate(cert.تاريخ_الانضمام)}
                             </p>
                         </div>
                     </div>
@@ -273,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modalDepartment').textContent = cert.الإدارة;
         document.getElementById('modalDesignation').textContent = cert.المسمى_الوظيفي;
         document.getElementById('modalCertificateName').textContent = cert.اسم_الشهادة;
-        document.getElementById('modalCertificateDate').textContent = formatDate(cert.تاريخ_الشهادة);
+        document.getElementById('modalCertificateDate').textContent = formatDate(cert.تاريخ_الانضمام);
 
         certificateModal.show();
     }
@@ -318,8 +319,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const matchesDepartment = !selectedDepartment || cert.الإدارة === selectedDepartment;
 
             let certYear = null;
-            if (cert.تاريخ_الشهادة) {
-                certYear = new Date(cert.تاريخ_الشهادة).getFullYear().toString();
+            if (cert.تاريخ_الانضمام) {
+                certYear = new Date(cert.تاريخ_الانضمام).getFullYear().toString();
             }
             const matchesYear = !selectedYear || certYear === selectedYear;
 

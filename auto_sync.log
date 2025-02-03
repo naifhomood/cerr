@@ -3523,3 +3523,1431 @@ error: Please commit or stash them.
 2025-01-30 10:21:55,990 - تم تنفيذ الأمر git بنجاح
 2025-01-30 10:21:56,088 - خطأ في تنفيذ الأمر ['git', 'commit', '-m', 'تحديث تلقائي للبيانات - 2025-01-30 10:21:55']: 
 2025-01-30 10:21:56,088 - فشل في رفع التغييرات إلى GitHub
+2025-02-01 03:07:45,138 - بدء تشغيل السكريبت في الوضع المباشر
+2025-02-01 03:07:47,838 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 03:07:47,838 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 04:00:06,350 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 04:00:06,351 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 05:05:04,544 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 05:05:04,546 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 05:45:06,524 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 05:45:06,525 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 06:45:06,561 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 06:45:06,565 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 07:05:16,356 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 07:05:16,356 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 07:10:11,879 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 07:10:11,879 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 07:45:14,931 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 07:45:14,931 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 08:15:07,211 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 08:15:07,213 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 08:52:08,487 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 08:52:08,489 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 09:55:09,243 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 09:55:09,246 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 10:55:15,446 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 10:55:15,448 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 12:00:04,721 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 12:00:04,725 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 13:00:04,760 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 13:00:04,762 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 13:20:04,915 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 13:20:04,916 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 14:20:07,607 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 14:20:07,610 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 15:20:11,948 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 15:20:11,951 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 16:25:05,925 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 16:25:05,926 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 17:25:11,137 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 17:25:11,139 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 18:25:18,889 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 18:25:18,891 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 19:30:06,464 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 19:30:06,466 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 20:35:05,494 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 20:35:05,496 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 21:35:06,131 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 21:35:06,134 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 22:35:06,544 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 22:35:06,548 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 23:35:06,537 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 23:35:06,538 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 23:55:06,838 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-01 23:55:06,841 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 00:35:06,643 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 00:35:06,645 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 01:35:06,785 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 01:35:06,787 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 02:35:06,964 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 02:35:06,966 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 03:35:24,645 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 03:35:24,647 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 04:40:07,162 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 04:40:07,165 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 05:40:21,543 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 05:40:21,546 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 06:45:06,725 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 06:45:06,728 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 07:20:06,495 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 07:20:06,496 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 08:25:06,385 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 08:25:06,386 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 09:25:06,692 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 09:25:06,696 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 10:30:07,104 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 10:30:07,106 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 11:15:07,139 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 11:15:07,140 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 12:20:11,509 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 12:20:11,514 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 13:15:12,525 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 13:15:12,526 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 14:20:06,606 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 14:20:06,608 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 15:15:12,721 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 15:15:12,722 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 16:15:13,205 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 16:15:13,205 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 16:15:15,254 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 16:15:15,255 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 17:20:06,904 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 17:20:06,906 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 18:15:07,701 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 18:15:07,703 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 19:15:19,903 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 19:15:19,905 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 20:15:05,548 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 20:15:05,550 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 21:15:07,021 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 21:15:07,025 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 22:15:14,501 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 22:15:14,503 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 23:20:06,802 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-02 23:20:06,805 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 00:25:07,382 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 00:25:07,383 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 01:30:06,790 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 01:30:06,792 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 02:20:06,994 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 02:20:06,995 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 03:20:15,391 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 03:20:15,394 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 04:25:07,041 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 04:25:07,044 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 05:25:07,101 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 05:25:07,103 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:15:13,990 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:15:13,991 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:34:54,190 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:34:54,190 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:34:56,240 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:34:56,240 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:34:58,283 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 06:34:58,283 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['employee_courses_degree.attach_the_certificate'].apply(
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 07:14:42,763 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 07:14:42,766 - 'employee_courses_degree.attach_the_certificate'
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'employee_courses_degree.attach_the_certificate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\auto_sync.py", line 110, in update_json
+    df['certificate_url'] = df['Column1.employee_courses_degree.attach_the_certificate'].apply(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\n.al-dhafiri\OneDrive - rajhifoundation\سطح المكتب\cerr\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'employee_courses_degree.attach_the_certificate'
+2025-02-03 07:14:45,163 - حدث خطأ أثناء تحديث ملف JSON: 'employee_courses_degree.attach_the_certificate'

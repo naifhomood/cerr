@@ -68,49 +68,67 @@ class ExcelToJsonHandler(FileSystemEventHandler):
     def update_json(self):
         try:
             # انتظار لحين إغلاق ملف الإكسل
-            time.sleep(1)
+            time.sleep(2)
             
-            # قراءة ملف الإكسل مع تحديد أسماء الأعمدة
-            df = pd.read_excel(self.excel_path)
+            # قراءة ملف الإكسل
+            df = pd.read_excel(self.excel_path, keep_default_na=False)
+            
+            # تنظيف أسماء الأعمدة
+            df.columns = df.columns.str.strip()
             
             # إعادة تسمية الأعمدة
             column_mapping = {
-                'Column1.name': 'name',
-                'Column1.department': 'department',
-                'Column1.employee_name': 'employee_name',
-                'Column1.employee_courses_degree.certificate_name': 'employee_courses_degree.certificate_name',
-                'Column1.employee_courses_degree.certificate_date': 'employee_courses_degree.certificate_date',
-                'Column1.user_id': 'user_id',
-                'Column1.gender': 'gender',
-                'Column1.date_of_joining': 'date_of_joining',
-                'Column1.designation': 'designation',
-                'Column1.branch': 'branch',
-                'Column1.employee_courses_degree.attach_the_certificate': 'employee_courses_degree.attach_the_certificate'
+                'name': 'Column1.name',
+                'department': 'Column1.department',
+                'employee_name': 'Column1.employee_name',
+                'certificate_name': 'Column1.employee_courses_degree.certificate_name',
+                'certificate_date': 'Column1.employee_courses_degree.certificate_date',
+                'user_id': 'Column1.user_id',
+                'gender': 'Column1.gender',
+                'date_of_joining': 'Column1.date_of_joining',
+                'designation': 'Column1.designation',
+                'branch': 'Column1.branch',
+                'attach_the_certificate': 'Column1.employee_courses_degree.attach_the_certificate',
+                'certificate_url': 'certificate_url'
             }
             
-            df = df.rename(columns=column_mapping)
+            # تطبيق إعادة التسمية فقط للأعمدة الموجودة
+            existing_columns = {k: v for k, v in column_mapping.items() if k in df.columns}
+            df = df.rename(columns=existing_columns)
             
             # معالجة القيم الفارغة
-            df = df.fillna('')  # تحويل NaN إلى نص فارغ
+            df = df.fillna('')
             
-            # إضافة الأعمدة المفقودة
-            for col in column_mapping.values():
-                if col not in df.columns:
-                    df[col] = ''
-                    
-            # إضافة عمود urlnext إذا لم يكن موجوداً
-            if 'urlnext' not in df.columns:
-                df['urlnext'] = 'https://next.rajhifoundation.org'
-                
-            # إضافة عمود certificate url إذا لم يكن موجوداً
-            if 'certificate url' not in df.columns:
-                df['certificate url'] = df.apply(lambda row: 
-                    f"https://next.rajhifoundation.org{row['employee_courses_degree.attach_the_certificate']}"
-                    if row['employee_courses_degree.attach_the_certificate']
-                    else '', axis=1)
+            # تحويل التواريخ إلى التنسيق المطلوب
+            date_columns = ['date_of_joining', 'Column1.employee_courses_degree.certificate_date']
+            for col in date_columns:
+                if col in df.columns:
+                    df[col] = pd.to_datetime(df[col], errors='coerce').dt.strftime('%Y-%m-%d')
+            
+            # إضافة حقل certificate_url إذا كان فارغاً
+            if 'certificate_url' not in df.columns:
+                df['certificate_url'] = df['Column1.employee_courses_degree.attach_the_certificate'].apply(
+                    lambda x: f"https://next.rajhifoundation.org/files/{x}" if x else ''
+                )
             
             # تحويل البيانات إلى قائمة من القواميس
             data = df.to_dict('records')
+            
+            # معالجة هيكل employee_courses_degree
+            for record in data:
+                employee_courses_degree = {
+                    'attach_the_certificate': record.get('Column1.employee_courses_degree.attach_the_certificate', ''),
+                    'certificate_date': record.get('Column1.employee_courses_degree.certificate_date', ''),
+                    'certificate_name': record.get('Column1.employee_courses_degree.certificate_name', '')
+                }
+                
+                # حذف الحقول القديمة
+                for key in list(record.keys()):
+                    if key.startswith('employee_courses_degree.'):
+                        del record[key]
+                
+                # إضافة الكائن المجمع
+                record['employee_courses_degree'] = employee_courses_degree
             
             # حفظ البيانات في ملف JSON
             with open(self.json_path, 'w', encoding='utf-8') as f:
@@ -126,6 +144,7 @@ class ExcelToJsonHandler(FileSystemEventHandler):
                 
         except Exception as e:
             logging.error(f'حدث خطأ أثناء تحديث ملف JSON: {str(e)}')
+            logging.exception(e)
 
 class AutoSyncService(win32serviceutil.ServiceFramework):
     _svc_name_ = "CertificatesAutoSync"

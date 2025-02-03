@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
 
     // تحميل البيانات
-    fetch('data/certificates.json')
+    fetch('/api/certificates')
         .then(response => response.json())
         .then(data => {
             // تنقية البيانات وإضافة معرف فريد

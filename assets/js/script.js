@@ -102,18 +102,40 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayCertificates(certificates) {
         certificatesContainer.innerHTML = '';
         certificates.forEach((cert, index) => {
-            let cardHtml = certificateTemplate
-                .replace(/%certificate_image%/g, cert.urlnext || 'assets/images/default-certificate.jpg')
-                .replace(/%index%/g, index)
-                .replace(/%employee_name%/g, cert['Column1.name'] || cert['Column1.employee_name'] || 'غير محدد')
-                .replace(/%department%/g, cert['Column1.department'] || 'غير محدد')
-                .replace(/%designation%/g, cert['Column1.designation'] || 'غير محدد')
-                .replace(/%certificate_name%/g, cert['Column1.name'] || 'غير محدد')
-                .replace(/%certificate_date%/g, formatDate(cert['Column1.date_of_joining'] || 'غير محدد'));
-
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = cardHtml;
-            certificatesContainer.appendChild(tempDiv.firstElementChild);
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'col-md-6 col-lg-4';
+            cardDiv.innerHTML = `
+                <div class="certificate-card">
+                    <div class="certificate-image-container">
+                        <img src="${cert.urlnext || 'assets/images/default-certificate.jpg'}" 
+                             alt="صورة الشهادة" 
+                             class="certificate-image" 
+                             data-certificate-id="${index}">
+                    </div>
+                    <div class="certificate-content">
+                        <h5 class="employee-name">${cert['Column1.name'] || cert['Column1.employee_name'] || 'غير محدد'}</h5>
+                        <div class="certificate-details">
+                            <div class="detail-item">
+                                <span class="label">الإدارة:</span>
+                                <span class="value">${cert['Column1.department'] || 'غير محدد'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">المسمى الوظيفي:</span>
+                                <span class="value">${cert['Column1.designation'] || 'غير محدد'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">اسم الشهادة:</span>
+                                <span class="value">${cert['Column1.name'] || 'غير محدد'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">تاريخ الشهادة:</span>
+                                <span class="value">${formatDate(cert['Column1.date_of_joining']) || 'غير محدد'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            certificatesContainer.appendChild(cardDiv);
         });
 
         // تحديث عداد الشهادات

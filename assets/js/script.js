@@ -56,21 +56,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Excel Data:', data); // للتحقق من البيانات
 
                     // تنقية البيانات وإضافة معرف فريد
-                    allCertificates = data.map((cert, index) => {
-                        console.log('Processing certificate:', cert); // للتحقق من كل شهادة
-                        return {
-                            id: index,
-                            الاسم: cert['Column1.name'] || cert['Column1.employee_name'] || 'غير محدد',
-                            الإدارة: cert['Column1.department'] || 'غير محدد',
-                            المسمى_الوظيفي: cert['Column1.designation'] || 'غير محدد',
-                            اسم_الشهادة: cert['Column1.name'] || 'غير محدد',
-                            تاريخ_الشهادة: cert['Column1.date_of_joining'] || 'غير محدد',
-                            رابط_الشهادة: cert['urlnext'] || '',
-                            الفرع: cert['Column1.branch'] || 'غير محدد',
-                            تاريخ_الانضمام: cert['Column1.date_of_joining'] || 'غير محدد',
-                            الجنس: cert['Column1.gender'] || 'غير محدد'
-                        };
-                    });
+                    allCertificates = data.map((cert, index) => ({
+                        id: index,
+                        'Column1.name': cert['Column1.name'] || 'غير محدد',
+                        'Column1.department': cert['Column1.department'] || 'غير محدد',
+                        'Column1.employee_name': cert['Column1.employee_name'] || cert['Column1.name'] || 'غير محدد',
+                        'Column1.designation': cert['Column1.designation'] || 'غير محدد',
+                        'Column1.date_of_joining': cert['Column1.date_of_joining'] || 'غير محدد',
+                        'Column1.branch': cert['Column1.branch'] || 'غير محدد',
+                        'Column1.gender': cert['Column1.gender'] || 'غير محدد',
+                        'urlnext': cert['urlnext'] || ''
+                    }));
 
                     console.log('Mapped Certificates:', allCertificates); // للتحقق من البيانات بعد التحويل
 
@@ -81,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // استخراج السنوات
                     displayedCertificates.forEach(cert => {
-                        if (cert.تاريخ_الانضمام && cert.تاريخ_الانضمام !== 'غير محدد') {
-                            const year = new Date(cert.تاريخ_الانضمام).getFullYear();
+                        if (cert['Column1.date_of_joining'] && cert['Column1.date_of_joining'] !== 'غير محدد') {
+                            const year = new Date(cert['Column1.date_of_joining']).getFullYear();
                             if (!isNaN(year)) {
                                 years.add(year);
                             }
@@ -107,13 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
         certificatesContainer.innerHTML = '';
         certificates.forEach((cert, index) => {
             let cardHtml = certificateTemplate
-                .replace(/%certificate_image%/g, cert.رابط_الشهادة || 'path/to/default/image.jpg')
+                .replace(/%certificate_image%/g, cert.urlnext || 'assets/images/default-certificate.jpg')
                 .replace(/%index%/g, index)
-                .replace(/%employee_name%/g, cert.الاسم)
-                .replace(/%department%/g, cert.الإدارة)
-                .replace(/%designation%/g, cert.المسمى_الوظيفي)
-                .replace(/%certificate_name%/g, cert.اسم_الشهادة)
-                .replace(/%certificate_date%/g, formatDate(cert.تاريخ_الانضمام));
+                .replace(/%employee_name%/g, cert['Column1.name'] || cert['Column1.employee_name'] || 'غير محدد')
+                .replace(/%department%/g, cert['Column1.department'] || 'غير محدد')
+                .replace(/%designation%/g, cert['Column1.designation'] || 'غير محدد')
+                .replace(/%certificate_name%/g, cert['Column1.name'] || 'غير محدد')
+                .replace(/%certificate_date%/g, formatDate(cert['Column1.date_of_joining'] || 'غير محدد'));
 
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = cardHtml;
@@ -151,8 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateFilters(certificates) {
         const departments = new Set();
         certificates.forEach(cert => {
-            if (cert.الإدارة && cert.الإدارة !== 'غير محدد') {
-                departments.add(cert.الإدارة);
+            if (cert['Column1.department'] && cert['Column1.department'] !== 'غير محدد') {
+                departments.add(cert['Column1.department']);
             }
         });
 
@@ -210,28 +206,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100 certificate-card">
                         <div class="certificate-image-container">
-                            <img src="${cert.رابط_الشهادة}" 
+                            <img src="${cert.urlnext}" 
                                  class="card-img-top certificate-image" 
-                                 alt="شهادة ${cert.الاسم}"
+                                 alt="شهادة ${cert['Column1.name']}"
                                  data-certificate-id="${cert.id}">
                         </div>
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-3">${cert.الاسم}</h5>
+                            <h5 class="card-title mb-3">${cert['Column1.name']}</h5>
                             <p class="card-text mb-2">
                                 <i class="fas fa-building ml-2"></i>
-                                ${cert.الإدارة}
+                                ${cert['Column1.department']}
                             </p>
                             <p class="card-text mb-2">
                                 <i class="fas fa-user-tie ml-2"></i>
-                                ${cert.المسمى_الوظيفي}
+                                ${cert['Column1.designation']}
                             </p>
                             <p class="card-text mb-2">
                                 <i class="fas fa-certificate ml-2"></i>
-                                ${cert.اسم_الشهادة}
+                                ${cert['Column1.name']}
                             </p>
                             <p class="card-text">
                                 <i class="fas fa-calendar-alt ml-2"></i>
-                                ${formatDate(cert.تاريخ_الانضمام)}
+                                ${formatDate(cert['Column1.date_of_joining'])}
                             </p>
                         </div>
                     </div>
@@ -269,12 +265,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        document.getElementById('modalCertificateImage').src = cert.رابط_الشهادة;
-        document.getElementById('modalEmployeeName').textContent = cert.الاسم;
-        document.getElementById('modalDepartment').textContent = cert.الإدارة;
-        document.getElementById('modalDesignation').textContent = cert.المسمى_الوظيفي;
-        document.getElementById('modalCertificateName').textContent = cert.اسم_الشهادة;
-        document.getElementById('modalCertificateDate').textContent = formatDate(cert.تاريخ_الانضمام);
+        document.getElementById('modalCertificateImage').src = cert.urlnext;
+        document.getElementById('modalEmployeeName').textContent = cert['Column1.name'];
+        document.getElementById('modalDepartment').textContent = cert['Column1.department'];
+        document.getElementById('modalDesignation').textContent = cert['Column1.designation'];
+        document.getElementById('modalCertificateName').textContent = cert['Column1.name'];
+        document.getElementById('modalCertificateDate').textContent = formatDate(cert['Column1.date_of_joining']);
 
         certificateModal.show();
     }
@@ -313,14 +309,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const filtered = allCertificates.filter(cert => {
             const matchesSearch = 
-                (cert.الاسم.toLowerCase().includes(searchTerm) || 
-                cert.اسم_الشهادة.toLowerCase().includes(searchTerm));
+                (cert['Column1.name'].toLowerCase().includes(searchTerm) || 
+                cert['Column1.name'].toLowerCase().includes(searchTerm));
 
-            const matchesDepartment = !selectedDepartment || cert.الإدارة === selectedDepartment;
+            const matchesDepartment = !selectedDepartment || cert['Column1.department'] === selectedDepartment;
 
             let certYear = null;
-            if (cert.تاريخ_الانضمام) {
-                certYear = new Date(cert.تاريخ_الانضمام).getFullYear().toString();
+            if (cert['Column1.date_of_joining']) {
+                certYear = new Date(cert['Column1.date_of_joining']).getFullYear().toString();
             }
             const matchesYear = !selectedYear || certYear === selectedYear;
 

@@ -50,28 +50,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Excel Data:', data); // للتحقق من البيانات
 
                     // تنقية البيانات وإضافة معرف فريد
-                    allCertificates = data.map((cert, index) => ({
-                        id: index,
-                        الاسم: cert['اسم الموظف'] || cert['employee_name'] || 'غير محدد',
-                        الإدارة: cert['القسم'] || cert['department'] || 'غير محدد',
-                        المسمى_الوظيفي: cert['المسمى الوظيفي'] || cert['designation'] || 'غير محدد',
-                        اسم_الشهادة: cert['اسم الشهادة'] || cert['certificate_name'] || 'غير محدد',
-                        تاريخ_الشهادة: cert['تاريخ الشهادة'] || cert['certificate_date'] || cert['date_of_joining'] || 'غير محدد',
-                        رابط_الشهادة: cert['رابط الشهادة'] || cert['certificate_url'] || '',
-                        الفرع: cert['الفرع'] || cert['branch'] || 'غير محدد',
-                        تاريخ_الانضمام: cert['تاريخ الانضمام'] || cert['date_of_joining'] || 'غير محدد'
-                    }));
+                    allCertificates = data.map((cert, index) => {
+                        console.log('Processing certificate:', cert); // للتحقق من كل شهادة
+                        return {
+                            id: index,
+                            الاسم: cert['اسم الموظف'] || cert['employee_name'] || cert['الاسم'] || 'غير محدد',
+                            الإدارة: cert['القسم'] || cert['department'] || cert['الإدارة'] || 'غير محدد',
+                            المسمى_الوظيفي: cert['المسمى الوظيفي'] || cert['designation'] || cert['المسمى'] || 'غير محدد',
+                            اسم_الشهادة: cert['اسم الشهادة'] || cert['certificate_name'] || cert['الشهادة'] || 'غير محدد',
+                            تاريخ_الشهادة: cert['تاريخ الشهادة'] || cert['certificate_date'] || cert['التاريخ'] || 'غير محدد',
+                            رابط_الشهادة: cert['رابط الشهادة'] || cert['certificate_url'] || cert['الرابط'] || '',
+                            الفرع: cert['الفرع'] || cert['branch'] || 'غير محدد',
+                            تاريخ_الانضمام: cert['تاريخ الانضمام'] || cert['date_of_joining'] || cert['تاريخ التعيين'] || 'غير محدد'
+                        };
+                    });
 
-                    // فلترة السجلات التي تحتوي على شهادات
-                    allCertificates = allCertificates.filter(cert => 
-                        cert.اسم_الشهادة !== 'غير محدد' || 
-                        cert.رابط_الشهادة
-                    );
+                    console.log('Mapped Certificates:', allCertificates); // للتحقق من البيانات بعد التحويل
+
+                    // فلترة السجلات التي تحتوي على شهادات (تم إزالة الفلترة مؤقتاً للتحقق من البيانات)
+                    displayedCertificates = [...allCertificates];
                     
-                    console.log('Processed Certificates:', allCertificates); // للتحقق من البيانات بعد المعالجة
+                    console.log('Final Certificates:', displayedCertificates); // للتحقق من البيانات النهائية
 
                     // استخراج السنوات
-                    allCertificates.forEach(cert => {
+                    displayedCertificates.forEach(cert => {
                         if (cert.تاريخ_الشهادة && cert.تاريخ_الشهادة !== 'غير محدد') {
                             const year = new Date(cert.تاريخ_الشهادة).getFullYear();
                             if (!isNaN(year)) {
@@ -80,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     });
 
-                    displayedCertificates = [...allCertificates];
                     updateFilters(allCertificates);
                     displayCertificates(displayedCertificates);
                 })

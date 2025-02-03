@@ -18,22 +18,28 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             // تنقية البيانات وإضافة معرف فريد
             allCertificates = data
-                .filter(cert => cert.certificate_url && cert.certificate_url.trim() !== '')
+                .filter(cert => 
+                    cert.employee_courses_degree?.certificate_name && 
+                    cert.employee_courses_degree.certificate_name.trim() !== '' &&
+                    cert.employee_courses_degree?.certificate_date && 
+                    cert.employee_courses_degree.certificate_date.trim() !== ''
+                )
                 .map((cert, index) => ({
-                    ...cert,
-                    id: index, // إضافة معرف ثابت
-                    employeeName: cert.employee_name || 'غير محدد',
-                    department: cert.department || 'غير محدد',
-                    designation: cert.designation || 'غير محدد',
-                    certificateName: cert.employee_courses_degree.certificate_name || 'غير محدد',
-                    certificateDate: cert.employee_courses_degree.certificate_date,
-                    certificateUrl: cert.certificate_url
+                    id: index,
+                    الاسم: cert.employee_name || 'غير محدد',
+                    الإدارة: cert.department || 'غير محدد',
+                    المسمى_الوظيفي: cert.designation || 'غير محدد',
+                    اسم_الشهادة: cert.employee_courses_degree.certificate_name || 'غير محدد',
+                    تاريخ_الشهادة: cert.employee_courses_degree.certificate_date,
+                    رابط_الشهادة: cert.certificate_url || '',
+                    الفرع: cert.branch || 'غير محدد',
+                    تاريخ_الانضمام: cert.date_of_joining || 'غير محدد'
                 }));
             
             // استخراج السنوات
             allCertificates.forEach(cert => {
-                if (cert.certificateDate) {
-                    const year = new Date(cert.certificateDate).getFullYear();
+                if (cert.تاريخ_الشهادة) {
+                    const year = new Date(cert.تاريخ_الشهادة).getFullYear();
                     if (!isNaN(year)) {
                         years.add(year);
                     }
@@ -50,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateFilters(certificates) {
         const departments = new Set();
         certificates.forEach(cert => {
-            if (cert.department && cert.department !== 'غير محدد') {
-                departments.add(cert.department);
+            if (cert.الإدارة && cert.الإدارة !== 'غير محدد') {
+                departments.add(cert.الإدارة);
             }
         });
 
@@ -109,28 +115,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100 certificate-card">
                         <div class="certificate-image-container">
-                            <img src="${cert.certificateUrl}" 
+                            <img src="${cert.رابط_الشهادة}" 
                                  class="card-img-top certificate-image" 
-                                 alt="شهادة ${cert.employeeName}"
+                                 alt="شهادة ${cert.الاسم}"
                                  data-certificate-id="${cert.id}">
                         </div>
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-3">${cert.employeeName}</h5>
+                            <h5 class="card-title mb-3">${cert.الاسم}</h5>
                             <p class="card-text mb-2">
                                 <i class="fas fa-building ml-2"></i>
-                                ${cert.department}
+                                ${cert.الإدارة}
                             </p>
                             <p class="card-text mb-2">
                                 <i class="fas fa-user-tie ml-2"></i>
-                                ${cert.designation}
+                                ${cert.المسمى_الوظيفي}
                             </p>
                             <p class="card-text mb-2">
                                 <i class="fas fa-certificate ml-2"></i>
-                                ${cert.certificateName}
+                                ${cert.اسم_الشهادة}
                             </p>
                             <p class="card-text">
                                 <i class="fas fa-calendar-alt ml-2"></i>
-                                ${formatDate(cert.certificateDate)}
+                                ${formatDate(cert.تاريخ_الشهادة)}
                             </p>
                         </div>
                     </div>
@@ -168,12 +174,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        document.getElementById('modalCertificateImage').src = cert.certificateUrl;
-        document.getElementById('modalEmployeeName').textContent = cert.employeeName;
-        document.getElementById('modalDepartment').textContent = cert.department;
-        document.getElementById('modalDesignation').textContent = cert.designation;
-        document.getElementById('modalCertificateName').textContent = cert.certificateName;
-        document.getElementById('modalCertificateDate').textContent = formatDate(cert.certificateDate);
+        document.getElementById('modalCertificateImage').src = cert.رابط_الشهادة;
+        document.getElementById('modalEmployeeName').textContent = cert.الاسم;
+        document.getElementById('modalDepartment').textContent = cert.الإدارة;
+        document.getElementById('modalDesignation').textContent = cert.المسمى_الوظيفي;
+        document.getElementById('modalCertificateName').textContent = cert.اسم_الشهادة;
+        document.getElementById('modalCertificateDate').textContent = formatDate(cert.تاريخ_الشهادة);
 
         certificateModal.show();
     }
@@ -212,14 +218,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const filtered = allCertificates.filter(cert => {
             const matchesSearch = 
-                (cert.employeeName.toLowerCase().includes(searchTerm) || 
-                cert.certificateName.toLowerCase().includes(searchTerm));
+                (cert.الاسم.toLowerCase().includes(searchTerm) || 
+                cert.اسم_الشهادة.toLowerCase().includes(searchTerm));
 
-            const matchesDepartment = !selectedDepartment || cert.department === selectedDepartment;
+            const matchesDepartment = !selectedDepartment || cert.الإدارة === selectedDepartment;
 
             let certYear = null;
-            if (cert.certificateDate) {
-                certYear = new Date(cert.certificateDate).getFullYear().toString();
+            if (cert.تاريخ_الشهادة) {
+                certYear = new Date(cert.تاريخ_الشهادة).getFullYear().toString();
             }
             const matchesYear = !selectedYear || certYear === selectedYear;
 

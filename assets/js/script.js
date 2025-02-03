@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         الاسم: cert['اسم الموظف'] || cert['employee_name'] || 'غير محدد',
                         الإدارة: cert['القسم'] || cert['department'] || 'غير محدد',
                         المسمى_الوظيفي: cert['المسمى الوظيفي'] || cert['designation'] || 'غير محدد',
-                        اسم_الشهادة: cert['اسم الشهادة'] || (cert.employee_courses_degree && cert.employee_courses_degree.certificate_name) || 'غير محدد',
-                        تاريخ_الشهادة: cert['تاريخ الشهادة'] || (cert.employee_courses_degree && cert.employee_courses_degree.certificate_date) || cert['date_of_joining'] || 'غير محدد',
+                        اسم_الشهادة: cert['اسم الشهادة'] || cert['certificate_name'] || 'غير محدد',
+                        تاريخ_الشهادة: cert['تاريخ الشهادة'] || cert['certificate_date'] || cert['date_of_joining'] || 'غير محدد',
                         رابط_الشهادة: cert['رابط الشهادة'] || cert['certificate_url'] || '',
                         الفرع: cert['الفرع'] || cert['branch'] || 'غير محدد',
                         تاريخ_الانضمام: cert['تاريخ الانضمام'] || cert['date_of_joining'] || 'غير محدد'

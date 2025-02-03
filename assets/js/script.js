@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
                     const data = XLSX.utils.sheet_to_json(worksheet);
                     
+                    if (data.length > 0) {
+                        console.log('أسماء الأعمدة في ملف Excel:', Object.keys(data[0]));
+                        console.log('نموذج للبيانات:', data[0]);
+                    }
+
                     console.log('Excel Data:', data); // للتحقق من البيانات
 
                     // تنقية البيانات وإضافة معرف فريد

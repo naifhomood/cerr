@@ -1,0 +1,261 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #c6984c;
+    --text-color: #2c3e50;
+    --border-color: #e1e8ef;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.main-header {
+    background-color:#e8ecf0;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    flex-shrink: 0;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+}
+
+.page-title {
+    color: #c6984c;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 0.5rem 0;
+    margin-top: 0;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+}
+
+.form-select {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+}
+
+.certificate-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.30);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.certificate-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.certificate-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.certificate-image:hover {
+    transform: scale(1.02);
+}
+
+.certificate-content {
+    padding: 1.5rem;
+}
+
+.employee-name {
+    color: #c6984c ;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.certificate-details {
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item .label {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.detail-item .value {
+    color: var(--text-color);
+}
+
+.certificate-actions {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #163d7f;
+    border-color: #163d7f;
+}
+
+.badge-custom {
+    font-size: 0.9em;
+    padding: 8px 12px;
+}
+
+.search-container {
+    margin: 20px 0;
+}
+
+.employee-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* تنسيق النافذة المنبثقة */
+.modal-content {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.certificate-preview {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.certificate-preview img {
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.certificate-details-modal {
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.certificate-details-modal h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.certificate-details-modal .detail-item {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.modal .btn-outline-primary {
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+}
+
+.modal .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* تنسيق عداد الشهادات */
+.certificates-counter {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.30);
+}
+
+.counter-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.counter-icon {
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+.counter-number {
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    min-width: 3rem;
+    text-align: center;
+}
+
+.counter-label {
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: 500;
+}

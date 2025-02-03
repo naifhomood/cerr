@@ -13,7 +13,11 @@ ENV/
 .vscode/
 .idea/
 
-# OS
+# تجاهل الملفات المؤقتة
+~$*
+*.tmp
+
+# تجاهل ملفات النظام
 .DS_Store
 Thumbs.db
 

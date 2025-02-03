@@ -12,28 +12,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const certificateTemplate = document.getElementById('certificateTemplate').innerHTML;
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
 
-    // تحميل البيانات
-    fetch('data/certificates.json')
-        .then(response => response.json())
-        .then(data => {
+    // تحميل البيانات من ملف Excel
+    fetch('data/certificates.xlsx')
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+            const workbook = XLSX.read(buffer, { type: 'array' });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const data = XLSX.utils.sheet_to_json(worksheet);
+            
             // تنقية البيانات وإضافة معرف فريد
             allCertificates = data
                 .filter(cert => 
-                    cert.employee_courses_degree?.certificate_name && 
-                    cert.employee_courses_degree.certificate_name.trim() !== '' &&
-                    cert.employee_courses_degree?.certificate_date && 
-                    cert.employee_courses_degree.certificate_date.trim() !== ''
+                    cert['اسم الشهادة'] && 
+                    cert['تاريخ الشهادة']
                 )
                 .map((cert, index) => ({
                     id: index,
-                    الاسم: cert.employee_name || 'غير محدد',
-                    الإدارة: cert.department || 'غير محدد',
-                    المسمى_الوظيفي: cert.designation || 'غير محدد',
-                    اسم_الشهادة: cert.employee_courses_degree.certificate_name || 'غير محدد',
-                    تاريخ_الشهادة: cert.employee_courses_degree.certificate_date,
-                    رابط_الشهادة: cert.certificate_url || '',
-                    الفرع: cert.branch || 'غير محدد',
-                    تاريخ_الانضمام: cert.date_of_joining || 'غير محدد'
+                    الاسم: cert['اسم الموظف'] || 'غير محدد',
+                    الإدارة: cert['القسم'] || 'غير محدد',
+                    المسمى_الوظيفي: cert['المسمى الوظيفي'] || 'غير محدد',
+                    اسم_الشهادة: cert['اسم الشهادة'] || 'غير محدد',
+                    تاريخ_الشهادة: cert['تاريخ الشهادة'],
+                    رابط_الشهادة: cert['رابط الشهادة'] || '',
+                    الفرع: cert['الفرع'] || 'غير محدد',
+                    تاريخ_الانضمام: cert['تاريخ الانضمام'] || 'غير محدد'
                 }));
             
             // استخراج السنوات

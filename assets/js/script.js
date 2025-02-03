@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const certificatesCount = document.getElementById('certificatesCount');
     const certificateTemplate = document.getElementById('certificateTemplate').innerHTML;
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
+    const certificatesContainer = document.getElementById('certificatesContainer');
 
     // إضافة زر التحديث في أعلى الصفحة
     const filterRow = document.querySelector('.row.mb-4');
@@ -93,6 +94,28 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
             showUpdateMessage('حدث خطأ أثناء تحديث البيانات', true);
         }
+    }
+
+    // دالة عرض الشهادات
+    function displayCertificates(certificates) {
+        certificatesContainer.innerHTML = '';
+        certificates.forEach((cert, index) => {
+            let cardHtml = certificateTemplate
+                .replace(/%certificate_image%/g, cert.رابط_الشهادة || 'path/to/default/image.jpg')
+                .replace(/%index%/g, index)
+                .replace(/%employee_name%/g, cert.الاسم)
+                .replace(/%department%/g, cert.الإدارة)
+                .replace(/%designation%/g, cert.المسمى_الوظيفي)
+                .replace(/%certificate_name%/g, cert.اسم_الشهادة)
+                .replace(/%certificate_date%/g, formatDate(cert.تاريخ_الشهادة));
+
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = cardHtml;
+            certificatesContainer.appendChild(tempDiv.firstElementChild);
+        });
+
+        // تحديث عداد الشهادات
+        certificatesCount.textContent = certificates.length;
     }
 
     // دالة إظهار رسالة التحديث

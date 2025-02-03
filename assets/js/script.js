@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let displayedCertificates = []; // المصفوفة المفلترة
     let currentCertificateIndex = 0;
     let years = new Set();
+    let lastModified = ''; // لتتبع آخر تحديث للملف
     
     const searchInput = document.getElementById('searchInput');
     const departmentFilter = document.getElementById('departmentFilter');
@@ -12,10 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const certificateTemplate = document.getElementById('certificateTemplate').innerHTML;
     const certificateModal = new bootstrap.Modal(document.getElementById('certificateModal'));
 
-    // تحميل البيانات من ملف Excel
-    fetch('data/certificates.xlsx')
-        .then(response => response.arrayBuffer())
-        .then(buffer => {
+    // دالة تحديث البيانات
+    async function updateData() {
+        try {
+            // التحقق من تاريخ آخر تعديل للملف
+            const response = await fetch('data/certificates.xlsx', { method: 'HEAD' });
+            const currentModified = response.headers.get('last-modified');
+            
+            // إذا لم يتغير الملف، لا داعي للتحديث
+            if (currentModified === lastModified) {
+                return;
+            }
+            
+            lastModified = currentModified;
+            
+            // تحميل البيانات من ملف Excel
+            const dataResponse = await fetch('data/certificates.xlsx');
+            const buffer = await dataResponse.arrayBuffer();
             const workbook = XLSX.read(buffer, { type: 'array' });
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             const data = XLSX.utils.sheet_to_json(worksheet);
@@ -38,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     تاريخ_الانضمام: cert['تاريخ الانضمام'] || 'غير محدد'
                 }));
             
-            // استخراج السنوات
+            // تحديث السنوات
+            years.clear();
             allCertificates.forEach(cert => {
                 if (cert.تاريخ_الشهادة) {
                     const year = new Date(cert.تاريخ_الشهادة).getFullYear();
@@ -51,8 +66,49 @@ document.addEventListener('DOMContentLoaded', function() {
             displayedCertificates = [...allCertificates];
             updateFilters(allCertificates);
             displayCertificates(displayedCertificates);
-        })
-        .catch(error => console.error('Error:', error));
+            
+            // إظهار رسالة نجاح التحديث
+            showUpdateMessage('تم تحديث البيانات بنجاح');
+        } catch (error) {
+            console.error('Error:', error);
+            showUpdateMessage('حدث خطأ أثناء تحديث البيانات', true);
+        }
+    }
+
+    // دالة إظهار رسالة التحديث
+    function showUpdateMessage(message, isError = false) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${isError ? 'danger' : 'success'} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+        alertDiv.style.zIndex = '1050';
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        document.body.appendChild(alertDiv);
+        
+        // إخفاء الرسالة بعد 3 ثواني
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 3000);
+    }
+
+    // تحديث البيانات كل دقيقة
+    setInterval(updateData, 60000);
+    
+    // التحديث الأولي للبيانات
+    updateData();
+
+    // إضافة زر التحديث في أعلى الصفحة
+    const filterRow = document.querySelector('.row.mb-4');
+    const refreshButton = document.createElement('div');
+    refreshButton.className = 'col-md-2';
+    refreshButton.innerHTML = `
+        <button class="btn btn-primary w-100" onclick="location.reload()">
+            <i class="fas fa-sync-alt"></i>
+            تحديث البيانات
+        </button>
+    `;
+    filterRow.insertBefore(refreshButton, filterRow.firstChild);
 
     // تحديث قائمة الإدارات
     function updateFilters(certificates) {
